@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://unpkg.com/aframe-textarea-component/dist/aframe-textarea-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>A-Frame-copy</title>
+
+    <script src="js/aframe-gui.js"></script>
+    <script src="js/gui-env.js"></script>
+  </head>
+  <style>
+    #splash {
+      position: absolute;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      margin: auto;
+
+      font-size: 12px;
+      font-family: sans-serif;
+      color: #fff;
+      text-transform: uppercase;
+
+      background-color: rgba(0, 0, 0, 0.99);
+      transition: all 1s ease-out;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 0.25rem solid rgba(255, 255, 255, 0.2);
+      border-top-color: white;
+      animation: spin 1s infinite linear;
+    }
+  </style>
+  <body>
+    <div id="splash">
+      <div class="loading"></div>
+    </div>
+    <a-scene
+      renderer="antialias:true; colorManagement: true; sortObjects: true;physicallyCorrectLights: false;
+      maxCanvasWidth: 1920;
+      maxCanvasHeight: 1920;"
+      cursor="rayOrigin: mouse;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="building"
+          src="/assets/aditya_birla_lighting_test.glb"
+        ></a-asset-item>
+        <a-asset-item id="girl" src="/assets/girl.glb"></a-asset-item>
+        <img id="my-image" src="/assets/Asset 1.png" />
+      </a-assets>
+      <a-entity gltf-model="#building"></a-entity>
+      <a-entity gltf-model="#girl" position="-1.1 0 -3.6"></a-entity>
+      <a-image
+        onclick="display()"
+        src="#my-image"
+        position="-2.17 1.525 -4.6"
+      ></a-image>
+    </a-scene>
+    <div id="containerbox">
+      <!-- <img src="/assets/Asset 1.png" /> -->
+      <input
+        type="text"
+        id="text"
+        name="firstname"
+        placeholder="firstname"
+        class="form-control"
+        autocomplete="off"
+      />
+      <input
+        type="text"
+        id="text1"
+        name="lastname"
+        placeholder="lastname"
+        class="form-control"
+        autocomplete="off"
+      />
+      <input
+        type="text"
+        id="text2"
+        name="phonenumber"
+        placeholder="phonenumber"
+        class="form-control"
+        autocomplete="off"
+      />
+      <input
+        style="background-color: red; border: none; text-align: center"
+        type="button"
+        id="text3"
+        value="submit"
+        name="button"
+      />
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
